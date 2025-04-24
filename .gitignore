@@ -3,3 +3,4 @@ Cargo.lock
 /streams
 channels.toml
 users.toml
+.env

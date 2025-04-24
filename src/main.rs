@@ -321,7 +321,7 @@ async fn main() -> std::io::Result<()> {
     // Create output directory
     fs::create_dir_all("./streams").unwrap_or(());
 
-    info!("Starting server on http://[::]:8080");
+    info!("Starting server on http://127.0.0.1:8080");
 
     info!("Starting cleanup task");
     if let Err(e) = start_cleanup_thread(120, &stream_manager) {
