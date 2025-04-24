@@ -1,0 +1,39 @@
+body { 
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+video {
+    width: 100%;
+    margin: 20px 0;
+}
+
+button, input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#channelButtons {
+    margin-bottom: 20px;
+}
+
+#loginForm {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 8px;
+    margin: 5px;
+}
+
