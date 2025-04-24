@@ -1,39 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
 body { 
-    font-family: Arial, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+h1 {
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
 }
 
 video {
     width: 100%;
     margin: 20px 0;
+    background-color: #000000;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 button, input[type="submit"] {
-    background-color: #4CAF50;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #3a86ff;
     color: white;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
     margin: 5px;
     border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
 button:hover, input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #2a76ef;
 }
 
 #channelButtons {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #loginForm {
     margin-bottom: 20px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 input[type="text"], input[type="password"] {
-    padding: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 10px;
     margin: 5px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #ffffff;
 }
 
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #888;
+}
+
+/* Make video controls dark mode friendly */
+video::-webkit-media-controls-panel {
+    background-color: rgba(30, 30, 30, 0.7);
+}
+
+/* Add a subtle hover effect to form elements */
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #3a86ff;
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.3);
+}

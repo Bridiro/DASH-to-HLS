@@ -8,7 +8,7 @@ async function login() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
-        credentials: 'include' // VERY IMPORTANT: allows cookies to be sent
+        credentials: 'include'
     });
 
     if (res.ok) {
@@ -34,8 +34,11 @@ async function fetchChannels() {
 
     channels.forEach(channel => {
         const btn = document.createElement('button');
-        btn.textContent = `Play ${channel.name}`;
-        btn.onclick = () => loadAndInitStream(channel.id);
+        btn.textContent = channel.name;
+        btn.onclick = () => {
+            loadAndInitStream(channel.id);
+            document.title = "After TV | " + channel.name;
+        };
         container.appendChild(btn);
     });
 }
@@ -52,7 +55,7 @@ function loadStream(id) {
     const streamUrl = `/streams/${id}/master.m3u8`;
 
     if (Hls.isSupported()) {
-        const hls = new Hls(); // no xhrSetup needed anymore
+        const hls = new Hls();
         hls.loadSource(streamUrl);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
