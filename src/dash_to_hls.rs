@@ -150,7 +150,6 @@ impl DashToHlsConverter {
         Ok(())
     }
 
-    // Rest of existing functions...
     fn process_mpd(
         &self,
     ) -> anyhow::Result<((Vec<String>, Option<String>), (Vec<String>, Option<String>))> {
@@ -571,7 +570,7 @@ impl DashToHlsConverter {
                 .join(format!("audio_{}.mp4", self.sequence_number));
             fs::write(&audio_file, &audio_data)?;
 
-            // Mux both streams with improved FFmpeg command
+            // Mux both streams with FFmpeg
             let ts_data = mux_to_ts(&video_file, &audio_file)?;
             self.pusher.write(&ts_data)?;
 

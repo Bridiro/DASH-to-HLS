@@ -14,7 +14,7 @@ This project is a full-stack system for decrypting and converting **CENC-encrypt
 
 - **Backend:** Rust + Actix-Web
 - **Frontend:** HTML + HLS.js
-- **Streaming:** FFmpeg (or direct segment manipulation)
+- **Streaming:** FFmpeg  & bento4 (or direct segment manipulation)
 - **Auth:** JWT via cookies, parsed from `.env`
 
 ## 🚀 Getting Started

@@ -79,7 +79,6 @@ async fn login(
     HttpResponse::Unauthorized().body("Invalid credentials")
 }
 
-// Web server handlers
 async fn proxy_stream(
     _user: auth::AuthenticatedUser,
     path: web::Path<(String, String)>,
@@ -265,7 +264,6 @@ fn start_cleanup_thread(
     Ok(())
 }
 
-// Main function
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     env_logger::init_from_env(env_logger::Env::default().default_filter_or("info"));
@@ -273,6 +271,8 @@ async fn main() -> std::io::Result<()> {
 
     // Load configuration
     let deserializer = Deserializer::new("channels.toml".to_string(), "users.toml".to_string());
+
+    // Load channels
     let channels_config = match deserializer.load_channels() {
         Ok(channels) => channels,
         Err(e) => {
@@ -300,6 +300,7 @@ async fn main() -> std::io::Result<()> {
         last_access: HashMap::new(),
     }));
 
+    // Load users
     let users_config = match deserializer.load_users() {
         Ok(users) => users,
         Err(e) => {
@@ -308,6 +309,7 @@ async fn main() -> std::io::Result<()> {
         }
     };
 
+    // Initialize user manager
     let user_manager = Arc::new(Mutex::new(UserManager {
         users: {
             let mut map = HashMap::new();
@@ -321,6 +323,8 @@ async fn main() -> std::io::Result<()> {
     // Create output directory
     fs::create_dir_all("./streams").unwrap_or(());
 
+    // Printing local address to open link from localhost (the server actually listens from all
+    // sources)
     info!("Starting server on http://127.0.0.1:8080");
 
     info!("Starting cleanup task");
